@@ -199,7 +199,9 @@ function symbol:register_module()
       if self[args.buf] then
         return
       end
-
+      if args['data'] == nil then
+        return
+      end
       local client = lsp.get_client_by_id(args.data.client_id)
       if not client or not client.supports_method('textDocument/documentSymbol') then
         return
